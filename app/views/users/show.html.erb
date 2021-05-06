@@ -1,0 +1,19 @@
+<h1><%= @user.username %> Profile:</h1>
+<h2>Email: <%= @user.email %></h2>
+<h3>Currency: <%= @user.currency %></h3>
+<h4>Posts:</h4>
+<% @user.posts.each do |post| %>
+    <% if post.text? %>
+        <%= post.text %>
+    <% end %><br>
+    <% if post.image.attached? %>
+        <%= image_tag post.image.variant(resize_and_pad: [100, 100]) %>
+    <% end %>
+    <% if session[:user_id] == @user.id %>
+        <%= link_to "Edit Post", edit_user_post_path(post.user, post) %>
+    <% end %>
+    <br><br>
+<% end %>
+
+
+

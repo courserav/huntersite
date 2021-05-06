@@ -1,0 +1,12 @@
+<% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |message| %>
+        <h3><%= message %></h3>
+    <% end %>
+<% end %>
+
+<label>Post Text:</label><br>
+<%= f.text_area :text %><br>
+<label>Attach Image:</label<br>
+<%= f.file_field :image %><br><br>
+
+<%= submit_tag "Submit Post" %>

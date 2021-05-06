@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Huntersite</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a><%= link_to "All Treasures", posts_path %></a>
+      <a><%= link_to "Post Treasure", new_post_path %></a>
+      <a><%= link_to "Hunters", users_path %></a>
+      <% if session[:user_id] %>
+        <a><%= link_to "Your Profile", user_path(session[:user_id]) %></a>
+        <a><%= link_to "Log Out", logout_path(session[:user_id]), method: :delete %></a>
+      <% else %>
+        <a><%= link_to "Log In", login_path %></a>
+        <a><%= link_to "Sign Up", new_user_path %></a>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>

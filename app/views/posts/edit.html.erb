@@ -1,0 +1,7 @@
+<h2>Edit Post</h2>
+
+<%= form_for [@user, @post] do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end %>
+
+<%= link_to "Delete this post - warning, this can't be undone", post_path(@post.id), method: :delete %>

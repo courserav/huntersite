@@ -1,0 +1,8 @@
+<% @comments.each do |comment| %>
+    <%= comment.show_author %> - <%= comment.content %><br>
+    <%= form_for @comment.like do |f| %>
+        <%= f.label "Like or Disklike:" %>
+        <%= f.radio_button :true_if_like, true %>
+        <%= f.radio_button :true_if_like, false %>
+    <% end %>
+<% end %>

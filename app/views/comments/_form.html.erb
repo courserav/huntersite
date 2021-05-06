@@ -1,0 +1,5 @@
+<label>Apraise Treasure - Comment</label>
+<%= f.text_area :content %>
+<%= f.hidden_field :author, :value => current_user.username %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= submit_tag "Submit Apraisal" %>
