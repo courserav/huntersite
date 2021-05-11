@@ -8,20 +8,20 @@ class LikesController < ApplicationController
     end
 
     def new
-        @post = Post.find(params[:post_id])
         @like = Like.new
     end
 
     def create
-        @post = Post.find(params[:post_id])
-        @like = @post.comments.likes.new(like_params)
+        @comment = Comment.find(params[:comment_id])
+        @post = @comment.post
+        @like = @comment.likes.create(like_params)
+        @like.update_attribute(:true_if_like, true)
 
-        if @like.valid?
-            @like.save
-            redirect_to @post
-        else
-            render :new
+        if @comment.likes.return_likes.count > 5 
+            @post.user.update_attribute(:currency, (@post.user.currency + 10))
         end
+        
+        redirect_to @post
     end
 
     def edit
@@ -48,6 +48,6 @@ class LikesController < ApplicationController
     private
 
     def like_params
-        params.require(:like).permit(:true_if_like, :comment_id)
+        params.permit(:true_if_like, :comment_id)
     end
 end

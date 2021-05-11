@@ -11,6 +11,8 @@
 
 <% if @post.comments %>
     <% @post.comments.each do |comment| %>
-        <%= comment.show_author %> - <%= comment.content %><br>  
+        <%= comment.show_author %> - <%= comment.content %>
+        <%= button_to 'Like', comment_likes_path(comment), method: :post %>
+        <%= "Likes: " %><%= comment.likes.count %><br>
     <% end %>
 <% end %>

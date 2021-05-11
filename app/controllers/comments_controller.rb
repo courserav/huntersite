@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     def new
         @post = Post.find(params[:post_id])
-        @comment = Comment.new
+        @comment = @post.comments.new
     end
 
     def create
@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
 
         if @comment.valid?
             @comment.save
-            current_user.update_attribute(:currency, (current_user.currency + 1))
             redirect_to @post
         else
             render :new

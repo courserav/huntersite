@@ -21,11 +21,4 @@ class Post < ApplicationRecord
         end
     end
 
-    def show_likes
-
-    end
-
-    def show_dislikes
-
-    end
 end
