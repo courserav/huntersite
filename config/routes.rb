@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
 
+  get "/users/alpha", to: "users#alpha", as: "alpha"
+
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     resources :posts
   end
@@ -25,3 +27,5 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback" => "sessions#create_by_facebook"
 
 end
+##make a customer route called /users/alpha. custom route should render an index for the users that show the users
+##organized by how much currency they have. 

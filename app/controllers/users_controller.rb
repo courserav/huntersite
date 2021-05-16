@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 
     end
 
+    def alpha
+        @users = User.sort_by_currency
+    end
+
     private
 
     def user_params

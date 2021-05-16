@@ -6,4 +6,5 @@ class User < ApplicationRecord
     validates :username, :email, presence: true
     validates :email, uniqueness: true
 
+    scope :sort_by_currency, -> {order(currency: :desc)}
 end
