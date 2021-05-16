@@ -1,7 +1,7 @@
 <h1>Posted Treasures</h1>
 
 <% @posts.each do |post| %>
-    <%= link_to post.user.username, user_post_path(post.user, post) %>
+    <%= link_to post.user.username, user_path(post.user) %>
     <% if post.text? %>
         <%= post.text %>
     <% end %>
