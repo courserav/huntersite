@@ -25,7 +25,8 @@ Start Rails server. Facebook omniauth is included. Make sure ssl certificate and
 root directory of the project. 
 
 You can start the rails server with -b and include the ssl keys like this:
-'rails s -b 'ssl://localhost:PORT?key-localhost.key$cert=localhost.crt'
+'rails s -b 'ssl://localhost:PORT_NUMBER?key-localhost.key$cert=localhost.crt'
+Replace PORT_NUMBER with the actual port number you use for Rails. 
 
 # Step 5
 Make an account first. Then, once your profile is under the list of registered hunters, log in as that user
