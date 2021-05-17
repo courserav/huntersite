@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "posts#index"
 
   get "/users/alpha", to: "users#alpha", as: "alpha"
+  get "/direct_messages/chat", to: "direct_messages#chat", as: "chat"
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     resources :posts
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   resources :likes
 
   resources :direct_messages
-  
+
   resources :dm_friends
 
   get "/login", to: "sessions#new"

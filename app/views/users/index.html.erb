@@ -1,4 +1,4 @@
 <h1>Registered Hunters:</h1>
 <% @users.each do |user| %>
-    <%= link_to user.username, user_path(user) %><br>
+    <%= link_to user.username, user_path(user) %> <%= button_to 'add friend', user_dm_friends_path(user), method: :post %><br>
 <% end %>

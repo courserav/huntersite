@@ -1,0 +1,6 @@
+<h1>Friends list:</h1>
+<h2>Click friend name to dm</h2>
+
+<% @dm_friends.each do |friend| %>
+    <%= link_to friend.username, new_direct_message_path %><br>
+<% end %>

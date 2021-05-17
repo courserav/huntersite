@@ -1,0 +1,5 @@
+<h1>All of your DMs</h1>
+
+<% @direct_messages.each do |direct_message| %>
+    <%= link_to "direct_message.dm_friend_id", chat_path(direct_message) %><br>
+<% end %>

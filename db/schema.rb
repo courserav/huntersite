@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_215934) do
     t.integer "dm_friend_id"
   end
 
-  create_table "dm_friend", force: :cascade do |t|
-    t.integer "direct_message_id"
+  create_table "dm_friends", force: :cascade do |t|
+    t.string "username"
   end
 
   create_table "likes", force: :cascade do |t|
