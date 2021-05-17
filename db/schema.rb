@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2021_04_26_215934) do
     t.string "author"
   end
 
+  create_table "direct_messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "dm_friend_id"
+  end
+
+  create_table "dm_friend", force: :cascade do |t|
+    t.integer "direct_message_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.boolean "true_if_like"
     t.string "comment_id"

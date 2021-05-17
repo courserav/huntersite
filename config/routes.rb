@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     resources :posts
+    resources :direct_messages
+    resources :dm_friends
   end
 
   resources :posts, only: [:index, :show, :new, :create, :edit, :update] do
@@ -19,6 +21,10 @@ Rails.application.routes.draw do
   end
 
   resources :likes
+
+  resources :direct_messages
+  
+  resources :dm_friends
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
