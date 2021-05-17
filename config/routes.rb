@@ -23,9 +23,11 @@ Rails.application.routes.draw do
 
   resources :likes
 
-  resources :direct_messages
+  resources :dm_friends do
+    resources :direct_messages
+  end
 
-  resources :dm_friends
+  resources :direct_messages
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

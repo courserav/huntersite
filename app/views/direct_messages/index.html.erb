@@ -1,5 +1,11 @@
-<h1>All of your DMs</h1>
+<h1>All of your DMs with <%= @dm_friend.username %></h1>
 
-<% @direct_messages.each do |direct_message| %>
-    <%= link_to "direct_message.dm_friend_id", chat_path(direct_message) %><br>
+<%= link_to "Send new DM", new_direct_message_path %><br><br>
+
+<% if @direct_messages %>
+    <% @direct_messages.each do |direct_message| %>
+        <%= direct_message.content %><br>
+    <% end %>
+<% else %>
+    <%= "Sorry, no messages." %>
 <% end %>

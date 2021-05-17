@@ -1,7 +1,8 @@
 class DirectMessagesController < ApplicationController
     
     def index
-        @direct_messages = DirectMessage.all
+        @dm_friend = DmFriend.find(params[:dm_friend_id])
+        @direct_messages = DirectMessage.where(params[:dm_friend_id])
     end
 
     def new
@@ -13,9 +14,9 @@ class DirectMessagesController < ApplicationController
 
             if @direct_message.valid?
                 @direct_message.save
-                redirect_to :chat
+                redirect_to dm_friend_direct_messages_path(@direct_message.dm_friend_id, @direct_message)
             else
-                redirect_to "users/:id/show"
+                redirect_to new
             end
     end
 
