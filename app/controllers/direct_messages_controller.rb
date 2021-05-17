@@ -5,7 +5,7 @@ class DirectMessagesController < ApplicationController
     end
 
     def new
-        @direct_message = DirectMessage.find(params[:id])
+        @direct_message = DirectMessage.new(params[:id])
     end
 
     def create

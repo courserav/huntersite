@@ -1,5 +1,6 @@
 <%= form_for @direct_message do |f| %>
-    <%= f.collection_select :dm_friend_id, Users.all, :id, :username %>
+    <%= f.text_field :content %>
+    <%= f.collection_select :dm_friend_id, User.all, :id, :username %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit %>
 <% end %>
