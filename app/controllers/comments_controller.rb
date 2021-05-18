@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
     skip_before_action :require_login, only: [:index]
 
     def index
-        @comments = Comment.where(user_id: current_user.id)
+        @user = User.find(params[:user_id])
+        @comments = Comment.where(user_id: @user.id)
     end
 
     def show

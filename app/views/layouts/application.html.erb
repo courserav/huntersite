@@ -13,9 +13,9 @@
   <body>
     <div class="topnav">
       <a><%= link_to "All Treasures", posts_path %></a>
-      <a><%= link_to "Post Treasure", new_user_post_path(current_user) %></a>
       <a><%= link_to "Hunters", users_path %></a>
       <% if session[:user_id] %>
+        <a><%= link_to "Post Treasure", new_user_post_path(current_user) %></a>
         <a><%= link_to "Your Profile", user_path(session[:user_id]) %></a>
         <a><%= link_to "Log Out", logout_path(session[:user_id]), method: :delete %></a>
       <% else %>
