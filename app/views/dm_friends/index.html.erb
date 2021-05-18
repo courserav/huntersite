@@ -2,5 +2,5 @@
 <h2>Click friend name to DM</h2>
 
 <% @dm_friends.each do |friend| %>
-    <%= link_to friend.username, dm_friend_direct_messages_path(friend) %><br>
+    <%= link_to friend.username, user_dm_friend_direct_messages_path(current_user, friend) %><br>
 <% end %>

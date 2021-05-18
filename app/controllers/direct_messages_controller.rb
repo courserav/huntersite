@@ -6,6 +6,8 @@ class DirectMessagesController < ApplicationController
     end
 
     def new
+        @user = current_user
+        @dm_friend = DmFriend.find(params[:dm_friend_id])
         @direct_message = DirectMessage.new(params[:id])
     end
 
@@ -14,7 +16,7 @@ class DirectMessagesController < ApplicationController
 
             if @direct_message.valid?
                 @direct_message.save
-                redirect_to dm_friend_direct_messages_path(@direct_message.dm_friend_id, @direct_message)
+                redirect_to @direct_message.user
             else
                 redirect_to new
             end

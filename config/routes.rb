@@ -7,27 +7,21 @@ Rails.application.routes.draw do
   get "/direct_messages/chat", to: "direct_messages#chat", as: "chat"
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :posts
-    resources :direct_messages
-    resources :dm_friends
+    resources :posts, except: [:index]
+    resources :dm_friends do
+      resources :direct_messages, only: [:index, :new, :create]
+    end
+    resources :comments, only: [:index, :show]
   end
 
-  resources :posts, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :comments
+  resources :posts, only: [:index, :show] do
+    resources :comments, except: [:index, :show]
   end
   delete "/posts/:id", to: "posts#destroy"
 
-  resources :comments do
+  resources :comments, except: [:index, :show] do
     resources :likes
   end
-
-  resources :likes
-
-  resources :dm_friends do
-    resources :direct_messages
-  end
-
-  resources :direct_messages
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

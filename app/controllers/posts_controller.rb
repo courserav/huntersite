@@ -11,16 +11,18 @@ class PostsController < ApplicationController
     end
 
     def new
+        @user = User.find(params[:user_id])
         @post = Post.new
     end
 
     def create
-        @post = current_user.posts.new(post_params)
+        @user = User.find(params[:user_id])
+        @post = @user.posts.new(post_params)
         current_user.update_attribute(:currency, (current_user.currency - 1))
 
         if @post.valid?
             @post.save
-            redirect_to post_path(@post)
+            redirect_to user_post_path(@user, @post)
         else
             render :new
         end

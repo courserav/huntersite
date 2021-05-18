@@ -1,6 +1,6 @@
 <h1>All of your DMs with <%= @dm_friend.username %></h1>
 
-<%= link_to "Send new DM", new_direct_message_path %><br><br>
+<%= link_to "Send new DM", new_user_dm_friend_direct_message_path %><br><br>
 
 <% if @direct_messages %>
     <% @direct_messages.each do |direct_message| %>
